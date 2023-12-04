@@ -25,32 +25,17 @@ int check_game_possible(char* line, ssize_t line_len){
             if (parsed_int > 14) {
                 printf("OVER");
                 return 0;
+            } else if (parsed_int > 13) {
+                if (line[i+3] != 'b') {
+                    printf("OVER");
+                    return 0;
+                }
             } else if (parsed_int > 12) {
-
-                switch (parsed_int) {
-                    case 13:
-                        if (line[i+3] == 'r') {
-                            printf("RED");
-                            return 0;
-                        }
-                        break;
-                    case 14:
-                        if (line[i+3] == 'g') {
-                            printf("GREEN");
-                            return 0;
-                        }
-                        break;
-                    case 15:
-                        if (line[i+3] == 'b') {
-                            printf("BLUE");
-                            return 0;
-                        }
-                        break;
-                    default:
-                        break;
+                if (line[i+3] != 'b' && line[i+3] != 'g') {
+                    printf("OVER");
+                    return 0;
                 }
             }
-
         }
     }
     printf("WIN");
